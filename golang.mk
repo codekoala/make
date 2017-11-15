@@ -9,6 +9,10 @@ build:
 	@mkdir -p ./bin
 	go build -ldflags '-s -X $(REPO)/version.Commit=$(TAG) -X $(REPO)/version.BuildDate=$(BUILD_DATE)' $(BUILD_EXTRA)
 
+# Produce checksums for built binaries.
+checksums:
+	cd ./bin/; sha256sum $(APP)* > SHA256SUMS
+
 # Run all tests.
 test:
 	@go test -race -cover `go list ./... | grep -v vendor`
