@@ -1,5 +1,5 @@
 APP ?= $(shell basename $(PWD))
-REPO ?= $(shell git config --get remote.origin.url | sed 's,^http.*//,,;s,^.*@,,;s,:,/,;s,\.git$,,')
+REPO ?= $(shell git config --get remote.origin.url | sed 's,^http.*//,,;s,^.*@,,;s,:,/,;s,\.git$$,,')
 TAG ?= $(shell git rev-parse HEAD)-dev
 BUILD_DATE := $(shell date +%FT%T%z)
 BUILD_EXTRA ?= -o ./bin/$(APP) ./cmd/$(APP)
